@@ -1,5 +1,6 @@
 <IfModule mod_rewrite.c>
-  RewriteEngine On RewriteCond %{HTTPS} !=on RewriteCond
-  %{HTTP:X-Forwarded-Proto} !https RewriteRule ^
-  https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  # Enable rewrite engine RewriteEngine On # Define the base directory
+  RewriteBase / # Redirect all requests to your front controller (e.g.,
+  index.php) RewriteCond %{REQUEST_FILENAME} !-f RewriteCond %{REQUEST_FILENAME}
+  !-d RewriteRule ^ index.php [QSA,L]
 </IfModule>
