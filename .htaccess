@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
-  # Enable rewrite engine RewriteEngine On # Define the base directory
-  RewriteBase / # Redirect all requests to your front controller (e.g.,
-  index.php) RewriteCond %{REQUEST_FILENAME} !-f RewriteCond %{REQUEST_FILENAME}
-  !-d RewriteRule ^ index.php [QSA,L]
+  ##Force SSL #Normal way (in case you need to deploy to NON-heroku) RewriteCond
+  %{HTTPS} !=on #Heroku way RewriteCond %{HTTP:X-Forwarded-Proto} !https #If
+  neither above conditions are met, redirect to https RewriteRule ^
+  https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
