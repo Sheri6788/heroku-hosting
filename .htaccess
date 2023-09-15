@@ -1,11 +1,11 @@
 <IfModule mod_rewrite.c>
   # Enable mod_rewrite RewriteEngine On # Set the base URL for your application
   (adjust to your needs) # If your app is hosted in a subdirectory, set it here.
-  RewriteBase /subdirectory # Redirect all requests to the index.php file
-  RewriteCond %{REQUEST_FILENAME} !-f RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^ index.php [L] # Set some response headers (adjust as needed)
-  Header set X-Frame-Options "SAMEORIGIN" Header set X-XSS-Protection "1;
-  mode=block" Header set X-Content-Type-Options "nosniff" # PHP settings (you
-  can adjust these as needed) php_flag display_errors off php_value
-  max_execution_time 300 php_value memory_limit 128M
+  RewriteBase /subdirectory # Redirect all requests to the index.php file if not
+  a file or directory RewriteCond %{REQUEST_FILENAME} !-f RewriteCond
+  %{REQUEST_FILENAME} !-d RewriteRule ^ index.php [L] # Set some response
+  headers (adjust as needed) Header set X-Frame-Options "SAMEORIGIN" Header set
+  X-XSS-Protection "1; mode=block" Header set X-Content-Type-Options "nosniff" #
+  PHP settings (you can adjust these as needed) php_flag display_errors off
+  php_value max_execution_time 300 php_value memory_limit 128M
 </IfModule>
