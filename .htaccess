@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
   # Enable mod_rewrite RewriteEngine On # Set the base URL for your application
   (adjust to your needs) # If your app is hosted in a subdirectory, set it here.
-  # RewriteBase /subdirectory # Redirect all requests to the index.php file
+  RewriteBase /subdirectory # Redirect all requests to the index.php file
   RewriteCond %{REQUEST_FILENAME} !-f RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^ index.php [L] # Set some response headers (adjust as needed)
   Header set X-Frame-Options "SAMEORIGIN" Header set X-XSS-Protection "1;
