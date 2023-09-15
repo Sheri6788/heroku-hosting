@@ -1,10 +1,8 @@
 <IfModule mod_rewrite.c>
-  RewriteEngine On RewriteBase /subdirectory # Redirect all requests to the
-  index.php file if not a file or directory RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d RewriteRule ^ index.php [L] # Set some
-  response headers (adjust as needed) Header always set X-Frame-Options
-  "SAMEORIGIN" Header always set X-XSS-Protection "1; mode=block" Header always
-  set X-Content-Type-Options "nosniff" # PHP settings (you can adjust these as
-  needed) php_flag display_errors off php_value max_execution_time 300 php_value
-  memory_limit 128M
+  RewriteEngine On RewriteBase /subdirectory RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d RewriteRule ^ index.php [L] Header always
+  set X-Frame-Options "SAMEORIGIN" Header always set X-XSS-Protection "1;
+  mode=block" Header always set X-Content-Type-Options "nosniff" php_flag
+  display_errors off php_value max_execution_time 300 php_value memory_limit
+  128M
 </IfModule>
