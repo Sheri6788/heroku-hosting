@@ -1,6 +1,11 @@
 <IfModule mod_rewrite.c>
-  RewriteEngine On RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$ RewriteRule
-  ^(.*) - [E=BASE:%1] RewriteCond %{ENV:REDIRECT_STATUS} ^$ RewriteRule
-  ^app\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L] RewriteCond %{REQUEST_FILENAME} -f
-  RewriteRule .? - [L] RewriteRule .? %{ENV:BASE}/app.php [L]
+  # Enable mod_rewrite RewriteEngine On # Set the base URL for your application
+  (adjust to your needs) # If your app is hosted in a subdirectory, set it here.
+  # RewriteBase /subdirectory # Redirect all requests to the index.php file
+  RewriteCond %{REQUEST_FILENAME} !-f RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.php [L] # Set some response headers (adjust as needed)
+  Header set X-Frame-Options "SAMEORIGIN" Header set X-XSS-Protection "1;
+  mode=block" Header set X-Content-Type-Options "nosniff" # PHP settings (you
+  can adjust these as needed) php_flag display_errors off php_value
+  max_execution_time 300 php_value memory_limit 128M
 </IfModule>
